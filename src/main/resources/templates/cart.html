@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cart</title>
+    <div th:replace="fragments/header :: head"></div>
+
+</head>
+<body>
+
+<nav th:replace="fragments/header :: header"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div th:each="lineItem : ${LineItems}" class="row from-group"
+                 style="border-bottom: thin solid #e3e3e3;margin-top:2%; margin-bottom: 2%; padding-bottom: 2%;">
+                <div class="col-md-3">
+                    <img th:src="@{${lineItem.product.photo}}" style="width:100%; height: 100%"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRitZRnZmnuAQjPJZM-8KNt06U64kiCTBIp-HBo-hVR_BBSdA5l0A"/>
+                </div>
+                <div class="col-md-7" style=" background-color: transparent; border-left: thin solid #e3e3e3;margin-top:4%;">
+                    <p>Title go here</p>
+                    <p style="margin-top: 5%">Description gos here</p>
+                </div>
+                <div class="col-md-2" style=" background-color: transparent;  border-left: thin solid #e3e3e3;margin-top:4%;">
+                    <p th:text="${lineItem.product.price}">price go here</p>
+                    <form  th:action="@{'/cart/remove/' +  ${lineItem.product.id}}"   method="post">
+                        <button style="margin-top: 9%" class="btn btn-default">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style=" padding-left: 4%">
+            <div class="row" style=" padding-left: 7%; border: thin solid #e3e3e3;">
+                <h1>Place the orderr</h1>
+                <div class="col-md-5" style="padding: 7% 0% 3% 0;">
+                    <button class="btn-group-justified well"><span class="glyphicon glyphicon-euro"> Buy</span></button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end row-->
+</div><!-- end container -->
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: head"></div>
+</head>
+
+<body>
+<header>
+    <h1 th:text="'Signed default in as ' + ${user}"> sign as developer </h1>
+</header>
+
+<div>
+    <form action="#" th:action="@{/products/insert}" th:object="${product}" method="post">
+        <label>
+            name <input type="text" th:field="*{name}"/>
+            price <input type="number" th:field="*{price}"/>
+            quantity <input type="number" th:field="*{quantity}"/>
+            photo <input type="text" th:field="*{photo}"/>
+        </label>
+        <input type="submit" th:value="Submit"/>
+    </form>
+</div>
+
+<footer>
+</footer>
+</body>
+</html>

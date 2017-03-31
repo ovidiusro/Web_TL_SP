@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="fragments/header :: head"></div>
+
+    <style>
+        .monospaced {
+            font-family: Monaco, monospace
+        }
+
+        .add-to-cart .btn-qty {
+            width: 52px;
+            height: 46px;
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container" id="product-section" style="background-color: #f9f9f9">
+
+    <div class="row">
+        <div class="col-md-6">
+            <img th:src="${product.photo}" src="http://finemodernart.com/paintings/4134-kiss.jpg"
+                 alt="Kodak Brownie Flash B Camera"
+                 style="width:100%" class="image-responsive"/>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 th:text="${product.name}">title go here</h1>
+                </div>
+            </div><!-- end row-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="label label-primary">Category</span>
+                </div>
+            </div><!-- end row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="description">
+                        short description
+                    </p>
+                </div>
+            </div><!-- end row -->
+
+
+            <div class="row">
+                <div class="col-md-12 bottom-rule">
+                    <h2 th:text="${product.price} +'$' " class="product-price">$pretul</h2>
+                </div>
+            </div><!-- end row -->
+
+
+            <div class="row">
+                <div class="col-md-6 ">
+                    <input class="btn btn-default btn-lg " value="1"/>
+                </div>
+                <div th:unless="${haveOne}"  class="col-md-3">
+                    <form action="#" th:action="@{'/productDetails/post/' + ${product.id}}"  method="post">
+                        <button  th:type="submit" class="btn btn-default btn-lg  btn-full-width">
+                            Add to myCart
+                        </button>
+                    </form>
+                </div>
+                <div th:if="${haveOne}"  class="col-md-3">
+                        <button   class="btn btn-default  btn-lg btn-brand btn-full-width">
+                            Bought
+                        </button>
+                </div>
+            </div><!-- end row -->
+
+
+            <div class="row">
+                <div class="col-md-12 bottom-rule top-10"></div>
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-12 top-10">
+                    <p>To orderr by telephone, <a href="tel:18005551212">please call +40 07556376990</a></p>
+                </div>
+            </div><!-- end row -->
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#description"
+                       aria-controls="description"
+                       role="tab"
+                       data-toggle="tab"
+                    >Description</a>
+                </li>
+
+                <li role="presentation">
+                    <a href="#features"
+                       aria-controls="features"
+                       role="tab"
+                       data-toggle="tab"
+                    >Features</a>
+                </li>
+
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="description">
+                    <h6>description</h6>
+                    <p>Descriere tablou</p>
+                </div>
+                <div role="tabpanel" class="tab-pane top-10" id="features">
+                    <h6>features</h6>
+                    <p> - </p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end row -->
+
+</div><!-- end container -->
+
+
+</body>
+</html>
+
